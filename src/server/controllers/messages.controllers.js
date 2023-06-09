@@ -1,21 +1,26 @@
 ///////////////////////////////////////////////////////////////////////////////////////////
+import MessageService from '../../app/message.service.js'
 import HttpError from './errorHandler.js'
 ///////////////////////////////////////////////////////////////////////////////////////////
-const pushMessage = ( req ,res ) => {
+const pushMessage = async ( req ,res ) => {
 
-    const { body : { message } } = req
+    const { body : { chat_id,text } } = req
 
+    if(!chat_id)throw new HttpError(400,'Require chat_id')
+    if(!text )throw new HttpError(400,'Require text')
 
-   throw new HttpError(400,'To be implement')  
+    const result = await MessageService.pushMessage( chat_id,text )
+    res.json( { messge:'OK' } )
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
-const getAllMessages =  ( req ,res ) => {
+const getAllMessages =  async ( req ,res ) => {
 
-    const { query : { idToken,email } } = req
+    const { query : { chat_id } } = req
 
 
-    throw new HttpError(400,'To be implement')   
+    const result = await MessageService.getMessages()
+    res.json( result )
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////

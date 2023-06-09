@@ -1,4 +1,6 @@
+///////////////////////////////////////////////////////////////////////////////////////////
 import TelegramBot from 'node-telegram-bot-api'
+import db from '../../db/index.js'
 ///////////////////////////////////////////////////////////////////////////////////////////
 class telegramService {
 
@@ -10,17 +12,21 @@ class telegramService {
         
     }
     //////////////////////////////////////////////////////////////////////////////////////
-    pushMessage ( chat_id, msj ){
+    async sendMessage ( chat_id, msj ){
 
-        this.bot.sendMessage( chat_id , msj )
+        const message = await this.bot.sendMessage( chat_id , msj )
+        return message.message_id ? true : false 
     }
     //////////////////////////////////////////////////////////////////////////////////////
     onMessage () {
 
         this.bot.on('message', ( msg ) => {
 
-            console.log( msg )
-        
+            const { chat: { id:chat_id,first_name,last_name }, text } = msg
+            const  obj = { chat_id, name: `${first_name} ${last_name}`,text }
+            console.log(`Mensaje Entrante: ${ JSON.stringify( obj ) }`)
+            db.Message.create( obj )
+
         })
     }
     //////////////////////////////////////////////////////////////////////////////////////
@@ -29,3 +35,8 @@ class telegramService {
 ///////////////////////////////////////////////////////////////////////////////////////////
 export default new telegramService()
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
