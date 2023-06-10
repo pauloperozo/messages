@@ -12,6 +12,7 @@ import notfoundHandler from './middlewares/notfoundHandler.js'
 import timeoutHandler from './middlewares/timeoutHandler.js'
 
 /*Cargamos Rutas */
+import  welcomeRoute from './routes/welcome.routes.js'
 import  messagesRoute from  './routes/messages.routes.js'
       
 ////////////////////////////////////////////////////////////////////////////////////////////      
@@ -25,6 +26,7 @@ export default _ => {
         server.use( logger("dev") )
         server.use( express.json() )
         server.use( timeout('5s'), timeoutHandler )
+        server.use('/',welcomeRoute)
         server.use('/messages',messagesRoute)
         server.use( notfoundHandler ) 
         server.use( errorHandler ) 
