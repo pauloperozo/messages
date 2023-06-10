@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "a9bbc4ab-50aa-4d34-877d-3597a578e4bc",
+		"name": "messages",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27326019"
+	},
+	"item": [
+		{
+			"name": "Welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000",
+					"host": [
+						"localhost"
+					],
+					"port": "5000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/messages/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"messages",
+						""
+					],
+					"query": [
+						{
+							"key": "chat_id",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "text",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Messages",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "5787321452",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "este es un mensaje con img 3",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/paulo/Descargas/goku-dragon-ball-z-1996-2jd98n6.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/messages/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"messages",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

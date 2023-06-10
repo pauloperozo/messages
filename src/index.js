@@ -8,10 +8,7 @@ async function start() {
         
         const server = createServer()
         const port   = process.env.PORT || 5000
-
-        /*Iniciamos La Base De Datos */
-    
-        
+               
         /*Cargamos el escucha del bot */
         telegramBot.onMessage()    
 

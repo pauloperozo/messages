@@ -10,7 +10,7 @@ Esta API permite conectarse a un sistema de mensajería y gestionar su función 
     - Se seleciono como plataforma de mensajeria  ```Telegram``` 
     - Herramienta de gestion ```BotFather``` 
     - Nombre del bot ```PauloPerozoBOt``` 
-    - link : http://t.me/PauloPerozoBOt
+    - link :```http://t.me/PauloPerozoBOt``` 
 
 * **Nota:** - Agregar el bot en su mobil o desktop para interactuar con el api👤.
 
