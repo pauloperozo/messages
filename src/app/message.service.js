@@ -14,6 +14,14 @@ class MessageService {
         return send
     }
 
+    async pushPhoto( chat_id, photo,text )
+    {
+        /*Envio De mensage y guardado */
+        const send = await telegramBot.sendPhoto(chat_id,photo,text ) 
+        if( send ) await db.Message.create( { chat_id,name:'BOT',text } )
+        return send
+    }
+
     async getMessages()
     {
         /*Consulta De Los Mensages */

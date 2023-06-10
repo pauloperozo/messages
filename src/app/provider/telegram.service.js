@@ -18,6 +18,12 @@ class telegramService {
         return message.message_id ? true : false 
     }
     //////////////////////////////////////////////////////////////////////////////////////
+    async sendPhoto ( chat_id, file,text ){
+
+        const sendFile = await this.bot.sendPhoto( chat_id , file, { caption: text } )
+        return sendFile.message_id ? true : false 
+    }
+    //////////////////////////////////////////////////////////////////////////////////////
     onMessage () {
 
         this.bot.on('message', ( msg ) => {

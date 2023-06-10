@@ -6,6 +6,7 @@ const pushMessage = async ( req ,res ) => {
 
     /*Destructurin */
     const { body : { chat_id,text } } = req
+    const { file } = req
 
     /*Validaciones de la ruta */
     if(!chat_id)throw new HttpError(400,'Require chat_id')
@@ -13,14 +14,24 @@ const pushMessage = async ( req ,res ) => {
 
     /*Separamos los id en caso de multiples chats */
     let result = []
-    String( chat_id ).split(',').forEach( async ( id  ) => {
+    for( let id of String( chat_id ).split(',') )
+    {
 
-        /*Enviamos los mensages */
-        const status = await MessageService.pushMessage( chat_id,text )
-        result.pus({chat_id: id,status})
+        if( file )
+        {
+            /* Mensaje con imagen */
+            const media_status = await MessageService.pushPhoto( id,file.buffer,text )
+            result.push({chat_id: id,status:media_status})
+        }
+        else 
+        {
+            /*Mensaje Simple Con Texto */
+            const single_status = await MessageService.pushMessage( id,text )
+            result.push({chat_id: id,status:single_status})
+        }
+    }
 
-    })
-
+    /*Respondemos  */
     res.json( { messages: result } )
 
 }
