@@ -1,10 +1,18 @@
 
-#  (chat integrations) 📊
+#  (Chat Integrations) 📊
 
 Esta API permite conectarse a un sistema de mensajería y gestionar su función básicas:
     - Permite listar chats con los usuarios que escriben al bot.
     - Permite enviar un mensaje de texto a los usuarios que interactúan con el bot ( uno/varios).
     - Permite enviar mensajes con fotografías a los usuarios que interactúan con el bot 📥.
+
+# ( Plataforma )
+    - Se seleciono como plataforma de mensajeria  ```Telegram``` 
+    - Herramienta de gestion ```BotFather``` 
+    - Nombre del bot ```PauloPerozoBOt``` 
+    - link : http://t.me/PauloPerozoBOt
+
+* **Nota:** - Agregar el bot en su mobil o desktop para interactuar con el api👤.
 
 #  ( Arquitectura o Patrones ) 
     - Se uso una arquitectura básica modelo, vista controlador ajustada
@@ -12,7 +20,6 @@ Esta API permite conectarse a un sistema de mensajería y gestionar su función 
     - se aplico parte del la arquitectura hexagonal separando  infraestructura( server,db ) de la lógica del negocio o dominio (app) no se aplico repository para no extender la aplicación  .
 
 #  ( Rutas o EndPoint ) 
-
 
 
 #### POST /messages

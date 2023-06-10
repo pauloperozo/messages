@@ -1,4 +1,4 @@
 import 'dotenv/config'
 import api from './src/index.js'
-//console.clear() 
+console.clear() 
 api.start() /*Iniciar Api */
